@@ -1,0 +1,1 @@
+<view><my-navbar vue-id="4589dfe6-1" bind:__l="__l" vue-slots="{{['content']}}"><text slot="content">用户反馈</text></my-navbar><view class="container"><textarea value="" maxlength="150" placeholder="欢迎你的宝贵意见, 不超过150字..." placeholder-style="color:#b9b9b9;font-size:30rpx;"></textarea></view><view class="submit"><text>提 交</text></view></view>

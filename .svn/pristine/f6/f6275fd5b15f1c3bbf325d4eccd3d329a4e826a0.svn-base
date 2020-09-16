@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/passwordback/passwordback2",
+    "pages/passwordback/passwordback",
+    "pages/register/register",
+    "pages/login/login",
+    "pages/user/user",
+    "pages/notify/notify",
+    "pages/details/details",
+    "pages/content-list/content-list",
+    "pages/company-profile/company-profile",
+    "components/my-navbar/my-navbar"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "ffc69e",
+    "selectedColor": "#FFFFFF",
+    "borderStyle": "black",
+    "backgroundColor": "#f27721",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "selectedIconPath": "static/images/home.png",
+        "iconPath": "static/images/home-active.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "个人中心",
+        "selectedIconPath": "static/images/person-active.png",
+        "iconPath": "static/images/person.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

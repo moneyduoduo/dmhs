@@ -1,0 +1,76 @@
+<template>
+	<view class="container">
+		<my-navbar>
+			<image slot="content" src="../../static/images/logo.jpg" mode="aspectFit"></image>
+		</my-navbar>
+		<view class="header">
+			<view class="title">公司简介</view>
+			<view class="subtitle">
+				<text class="name">{{info.name}}</text>
+				<text class="date">{{info.date}}</text>
+			</view>
+		</view>
+		<view class="imgs" v-for="(item, index) in info.pics" :key="index">
+			<image :src="item" mode="widthFix"></image>
+		</view>
+		<view class="content">
+			<text class="text">
+				{{info.content}}
+			</text>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				menuPosition:{
+					top: 0,
+					height: 0
+				},
+				info: {
+					name: '大全矿业',
+					date: '2018/05/03',
+					pics:[
+						'../../static/images/Fujian%20Ocean%20Company%20Profile%20Final.jpg',
+						'../../static/images/Fujian%20Ocean%20Company%20Profile%20Final1.jpg'
+					],
+					content:'华为创立于1987年，是全球领先的ICT（信息与通信）基础设施和智能终端提供商，我们致力于把数字世界带入每个人、每个家庭、每个组织，构建万物互联的智能世界。目前华为约有19.4万 员工，业务遍及170多个国家和地区，服务30多亿人口。'
+				}
+			};
+		}
+	}
+</script>
+
+<style lang="scss">
+	.header{
+		padding: 40rpx;
+		.title{
+			font-size: $my-title-large-size;
+			font-weight: $my-title-weight;
+		}
+		.subtitle{
+			padding: 10px 0;
+			.name, .date{
+				font-size: $my-title-size;
+				color: $my-content-color;
+			}
+			.date{
+				padding-left: 20px;
+			}
+		}
+	}
+	.imgs{
+		image{
+			width: 100%;
+		}
+	}
+	.content{
+		padding: 40rpx;
+		.text{
+			font-size: $my-title-size;
+			letter-spacing: $my-content-letter-spacing;
+		}
+	}
+</style>

@@ -1,0 +1,145 @@
+<template>
+	<view>
+		<my-navbar>
+			<text slot="content">选择货主</text>
+		</my-navbar>
+		<!-- 顶部搜索 -->
+		<view class="search">
+			<input type="text" value="" placeholder="请输入公司名、手机号" placeholder-style="color:#b9b9b9;font-size:30rpx;" />
+			<view class="icon">
+				<image src="../../static/images/sousuo.png" mode="widthFix"></image>
+			</view>
+			<text>搜索</text>
+		</view>
+		<!-- 中间空格 -->
+		<view class="split"></view>
+		<!-- 列表 -->
+		<view class="list">
+			<view class="item-wrap" v-for="(item, index) in list" :key="index" @click="chooseProvider(item)">
+				<view class="item">
+					<!-- 左侧头像 -->
+					<view class="left">
+						<view class="icon">
+							<image :src="item.pic" mode="widthFix"></image>
+						</view>
+					</view>
+					<!-- 右侧信息 -->
+					<view class="right">
+						<view class="info">
+							<text class="name">{{item.name}}</text>
+							<text class="phone">{{item.phone}}</text>
+						</view>
+						<view class="company">{{item.company}}</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	import {backTo} from '@/utils/utils.js'
+	export default {
+		data() {
+			return {
+				list:[
+					{pic:'../../static/images/person.png',name:'Mou先生',phone:'8008208820',company:'马来西亚大全矿业有限公司'},
+					{pic:'../../static/images/person.png',name:'Mou先生',phone:'8008208820',company:'马来西亚大全矿业有限公司'},
+					{pic:'../../static/images/person.png',name:'Mou先生',phone:'8008208820',company:'马来西亚大全矿业有限公司'},
+					{pic:'../../static/images/person.png',name:'Mou先生',phone:'8008208820',company:'马来西亚大全矿业有限公司'},
+					{pic:'../../static/images/person.png',name:'Mou先生',phone:'8008208820',company:'马来西亚大全矿业有限公司'},
+					{pic:'../../static/images/person.png',name:'Mou先生',phone:'8008208820',company:'马来西亚大全矿业有限公司'},
+					{pic:'../../static/images/person.png',name:'Mou先生',phone:'8008208820',company:'马来西亚大全矿业有限公司'},
+					{pic:'../../static/images/person.png',name:'Mou先生',phone:'8008208820',company:'马来西亚大全矿业有限公司'}
+				]
+			};
+		},
+		methods:{
+			// 传递参数给上一个页面 选择手机号
+			chooseProvider(provider) {
+				uni.$emit('chooseProvider',{provider});
+				backTo();
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	.search{
+		position: relative;
+		padding: 20rpx 40rpx;
+		display: flex;
+		align-items: center;
+		input{
+			padding-left: 220rpx;
+			padding-right: 50rpx;
+			background: #f6f6f6;
+			width: 100%;
+			height: 70rpx;
+			border-radius: 35rpx;
+		}
+		text{
+			padding: 10rpx 0 10rpx 20rpx;
+			flex-shrink: 0;
+			font-size: 30rpx;
+			color: #7a7a7a;
+		}
+		.icon{
+			position: absolute;
+			left: 210rpx;
+			display: flex;
+			align-items: center;
+			width: 22rpx;
+			height: 22rpx;
+			image{
+				width: 100%;
+				border-radius: 50%;
+			}
+		}
+	}
+	.split{
+		width: 100%;
+		height: 10rpx;
+		background: #F8F8F8;
+	}
+	.list{
+		.item-wrap{
+			@include border-1px(#eeeeee);
+			.item{
+				padding: 20rpx 40rpx;
+				display: flex;
+				align-items: center;
+				.left{
+					display: flex;
+					align-items: center;
+					.icon{
+						width: 125rpx;
+						height: 125rpx;
+						border-radius: 50rpx;
+						image{
+							width: 100%;
+						}
+					}
+				}
+				.right{
+					padding-left: 20rpx;
+					display: flex;
+					flex-direction: column;
+					.info{
+						padding-bottom: 35rpx;
+						.name, .phone{
+							font-size: 32rpx;
+						}
+						.phone{
+							padding-left: 20rpx;
+						}
+					}
+					.company{
+						font-size: 28rpx;
+						color: #f27721;
+					}
+				}
+			}
+		}
+	}
+</style>

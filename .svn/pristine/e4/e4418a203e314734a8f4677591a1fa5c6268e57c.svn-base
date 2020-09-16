@@ -1,0 +1,72 @@
+<template>
+		<view class="uni-padding-wrap">
+			<uni-swiper-dot>
+				<swiper class="swiper" :style="{height: swiperHeight + 'px'}" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" 
+				:duration="duration" 
+				:indicator-color="indicatorColor" :indicator-active-color='indicatorActiveColor'>
+					<swiper-item class="swiper-item">
+						<image class="banner-img" src="../../static/images/New%20era%20of%20navigation.jpg" mode="widthFix"></image>
+					</swiper-item>
+					<swiper-item class="swiper-item">
+						<image class="banner-img" src="../../static/images/New%20era%20of%20navigation.jpg" mode="widthFix"></image>
+					</swiper-item>
+					<swiper-item class="swiper-item">
+						<image class="banner-img" src="../../static/images/New%20era%20of%20navigation.jpg" mode="widthFix"></image>
+					</swiper-item>
+				</swiper>
+			</uni-swiper-dot>
+			
+		</view>
+</template>
+
+<script>
+	export default {
+		props: [
+			
+		],
+		data() {
+			return {
+				indicatorDots: true,
+				autoplay: false,
+				interval: 2000,
+				duration: 500,
+				indicatorActiveColor: '#f27721',
+				indicatorColor: '#e5e5e5',
+				swiperHeight: 0
+			}
+		},
+		methods: {
+			// swiper自适应高度 swiper插件必须要一个高度撑开 获取图片自适应的高度然后给swiper
+			getElementHeight(element) {
+				setTimeout(()=>{
+					let query = uni.createSelectorQuery().in(this);
+					query.select(element).boundingClientRect();
+					query.exec((res) => {
+						if (!res) {//如果没获取到，再调一次
+							this.getElementHeight();
+						}else {
+							this.swiperHeight = res[0].height;
+							if(this.swiperHeight === 240) {
+								this.getElementHeight();
+							}
+						}
+					})
+				},200)
+			}
+		},
+		onReady() {
+			this.getElementHeight('.banner-img');
+		}
+	}
+</script>
+
+<style lang="scss">
+	.swiper{
+		height: 100%;
+	}
+	.swiper-item{
+		image{
+			width: 100%;
+		}		
+	}
+</style>

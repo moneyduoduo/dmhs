@@ -1,0 +1,49 @@
+<template>
+	<view>
+		<!-- 标题 -->
+		<view class="title">
+			<text class="text">标题</text>
+		</view>
+		<!-- 副标题 -->
+		<view class="subtitle">
+			<text class="author">作者</text>
+			<text class="time">2012-1-1</text>
+		</view>
+		<!-- 详情介绍 -->
+		<view class="info">
+			<text class="title">详情信息</text>
+			<rich-text>
+				分威风威风我今儿附件文件访问可否尽快我
+			</rich-text>
+		</view>
+		<!-- 图片列表 -->
+		<view class="imgs">
+			<view class="img"></view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				
+			}
+		},
+		methods: {
+			
+		}
+	}
+</script>
+
+<style lang="scss">
+	.imgs{
+		margin: 0 auto;
+		padding: 10rpx;
+		.img{
+			width: 100%;
+			height: 100px;
+			background-color: #007AFF;
+		}
+	}
+</style>

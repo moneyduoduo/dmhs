@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/password/passwordback2",
+    "pages/password/passwordback",
+    "pages/register/register",
+    "pages/login/login",
+    "pages/user/user",
+    "pages/notify/notify",
+    "pages/information/details",
+    "pages/information/information",
+    "pages/company-profile/company-profile",
+    "pages/user/info",
+    "pages/business/business-list-admin",
+    "pages/business/business-list",
+    "pages/business/business-details",
+    "pages/business/business-order",
+    "pages/business/business-order-info",
+    "pages/business/provider",
+    "pages/user/feedback",
+    "pages/password/passwordchange",
+    "pages/user/about"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#ffc69e",
+    "selectedColor": "#FFFFFF",
+    "borderStyle": "black",
+    "backgroundColor": "#f27721",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "selectedIconPath": "static/images/home.png",
+        "iconPath": "static/images/home-active.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "个人中心",
+        "selectedIconPath": "static/images/person-active.png",
+        "iconPath": "static/images/person.png"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap11.json"
+}

@@ -1,0 +1,55 @@
+<template>
+	<view class="container">
+		<!-- 顶部用户信息 -->
+		<view class="user">
+			<view class="avator"></view>
+			<!-- 登陆后显示 -->
+			<view class="info" v-if="isLogin">
+				<text class="name">用户姓名</text>
+				<text class="company">公司姓名</text>
+			</view>
+			<!-- 未登录 -->
+			<view class="toLogin" v-if="!isLogin">
+				<button type="default">请点击登录</button>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				isLogin: true
+			}
+		},
+		methods: {
+			
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	.user{
+		display: flex;
+		padding: 20rpx;
+		background: pink;
+		.avator{
+			width: 150rpx;
+			height: 150rpx;
+			border-radius: 50%;
+			background: blue;
+		}
+		.info{
+			display: flex;
+			flex-flow: column;
+			flex: 1 1;
+			text{
+				display: block;
+			}
+		}
+		.toLogin{
+			display: inline-block;
+		}
+	}
+</style>

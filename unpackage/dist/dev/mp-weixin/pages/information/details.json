@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "咨询详情",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "my-navbar": "/components/my-navbar/my-navbar"
+  }
+}

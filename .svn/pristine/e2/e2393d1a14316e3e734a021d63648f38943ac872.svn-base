@@ -1,0 +1,277 @@
+<template>
+	<view>
+		<my-navbar>
+		</my-navbar>
+	
+		<view class="container">
+			<!-- 顶部用户信息 -->
+			<view class="user-wrap" @click="toInfo">
+				<view class="user">
+					<!-- 头像 -->
+					<view class="avator">
+						<image :src="info.avator" mode="widthFix"></image>
+					</view>
+					<view class="info" v-if="isLogin">
+						<view class="name">{{info.userName}}</view>
+						<view class="company">{{info.company}}</view>
+					</view>
+					<!-- 未登录 -->
+					<view class="info" v-if="!isLogin">
+						<text class="name">请点击登录</text>
+					</view>
+				</view>
+				<!-- 右侧小箭头图标 -->
+				<view class="more">
+					<image src="../../static/images/arrow-left-.png" mode="widthFix"></image>
+				</view>
+			</view>
+			<!-- 动态业务 -->
+			<view class="business">
+				<image src="../../static/images/user-business-bg.png" mode="widthFix"></image>
+				<view class="title">业务动态</view>
+				<view class="content">
+					<view class="ing" @click="toBusiness(1)">
+						<view class="num" v-if="isLogin">243</view>
+						<view class="num" v-if="!isLogin">0</view>
+						<view class="text">进行中</view>
+					</view>
+					<view class="ed" @click="toBusiness(2)">
+						<view class="num" v-if="isLogin">100</view>
+						<view class="num" v-if="!isLogin">0</view>
+						<view class="text">已完成</view>
+					</view>
+				</view>
+			</view>
+			<!-- 应用列表 -->
+			<view class="menu-title">
+				应用列表
+			</view>
+			<view class="user-wrap border-1px" v-if="isLogin" @click="toBusinessByAdmin">
+				<view class="user">
+					<view class="icon">
+						<image src="../../static/images/guanliyuan-.png" mode="widthFix"></image>
+					</view>
+					<view class="info">
+						<view class="text">管理员中心</view>
+					</view>
+				</view>
+				<view class="more">
+					<image src="../../static/images/arrow-left-.png" mode="widthFix"></image>
+				</view>
+			</view>
+			<view class="user-wrap border-1px" @click="toFeedBack">
+				<view class="user">
+					<view class="icon">
+						<image src="../../static/images/liaotian-2.png" mode="widthFix"></image>
+					</view>
+					<view class="info">
+						<view class="text">客户反馈</view>
+					</view>
+				</view>
+				<view class="more">
+					<image src="../../static/images/arrow-left-.png" mode="widthFix"></image>
+				</view>
+			</view>
+			<view class="user-wrap border-1px" @click="toChangePwd">
+				<view class="user" >
+					<view class="icon">
+						<image src="../../static/images/mima-2.png" mode="widthFix"></image>
+					</view>
+					<view class="info">
+						<view class="text">修改密码</view>
+					</view>
+				</view>
+				<view class="more">
+					<image src="../../static/images/arrow-left-.png" mode="widthFix"></image>
+				</view>
+			</view>
+			<view class="user-wrap border-1px" @click="toAbout">
+				<view class="user">
+					<view class="icon">
+						<image src="../../static/images/guanyu-4.png" mode="widthFix"></image>
+					</view>
+					<view class="info">
+						<view class="text">关于</view>
+					</view>
+				</view>
+				<view class="more">
+					<image src="../../static/images/arrow-left-.png" mode="widthFix"></image>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	import executeS from '@/service/executeS.js';
+	import {linkTo} from '@/utils/utils.js';
+	
+	/* 定义上一个页面是点击进行中还是已完成进入本页面的类型 */
+	const TYPE_ING = 1;
+	const TYPE_ED = 2;
+	export default {
+		data() {
+			return {
+				isLogin: true,
+				info:{
+					avator: '../../static/images/person.png',
+					userName: '凌凌',
+					sex: '女',
+					birthday: '12-11',
+					company: '马来西亚大全矿业有限公司',
+					addr: '福建省福州市'
+				}
+			}
+		},
+		methods: {
+			// 跳转用户信息
+			toInfo() {
+				linkTo('../user/info');
+			},
+			// 跳转业务详情
+			toBusiness(type) {
+				linkTo('../business/business-list?type=' + type);
+			},
+			// 跳转业务详情
+			toBusinessByAdmin() {
+				linkTo('../business/business-list-admin');
+			},
+			// 用户反馈
+			toFeedBack() {
+				linkTo('../user/feedback');
+			},
+			toChangePwd() {
+				linkTo('../password/passwordchange');
+			},
+			toAbout() {
+				linkTo('../user/about');
+			}
+		},
+		onLaunch: function() {
+		
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	.container{
+		padding: 0 40rpx;
+	}
+	.menu-title{
+		padding-top: 38rpx;
+		font-size: 30rpx;
+		font-weight: normal;
+		line-height: 45rpx;
+		letter-spacing: 0.3rpx;
+		color: #020202;
+	}
+	.user-wrap{
+		padding: 10px 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.user{
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			.avator{
+				padding: 10rpx;
+				width: 124rpx;
+				height: 124rpx;
+				border-radius: 50%;
+				image{
+					width: 100%;
+				}
+			}
+			.icon{
+				width: 76rpx;
+				height: 76rpx;
+				image{
+					width: 100%;
+				}
+			}
+			.info{
+				padding-left: 40rpx;
+				.name{
+					font-size: 34rpx;
+					font-weight: normal;
+					line-height: 48rpx;
+					letter-spacing: 0rpx;
+					color: #252525;
+				}
+				.company{
+					padding-top: 5px;
+					font-size: 26rpx;
+					font-weight: normal;
+					line-height: 45rpx;
+					letter-spacing: 0.3rpx;
+					color: #a4a4a4;
+				}
+				.text{
+					font-size: 30rpx;
+					font-weight: normal;
+					line-height: 45rpx;
+					letter-spacing: 0.3rpx;
+					color: #000000;
+				}
+			}
+		}
+		.more{
+			width: 10rpx;
+			height: 10rpx;
+			image{
+				width: 100%;
+			}
+		}
+	}
+	.border-1px{
+		padding: 20px 0;
+		@include border-1px(#eeeeee)
+	}
+	.business{
+		margin-top: 48rpx;
+		position: relative;
+		image{
+			width: 100%;
+		}
+		.title{
+			position: absolute;
+			top: 20rpx;
+			left: 28rpx;
+			font-size: 24rpx;
+			font-weight: normal;
+			letter-spacing: 0rpx;
+			color: #ffe4d2;
+		}
+		.content{
+			box-sizing: border-box;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			.ing, .ed{
+				padding: 0 50rpx;
+				text-align: center;
+				.num{
+					padding: 20rpx 0;
+					font-size: 40rpx;
+					font-weight: normal;
+					line-height: 48rpx;
+					letter-spacing: 0rpx;
+					color: #ffffff;
+				}
+				.text{
+					font-size: 24rpx;
+					font-weight: normal;
+					line-height: 45rpx;
+					letter-spacing: 0rpx;
+					color: #ffffff;
+				}
+			}
+		}
+		
+	}
+</style>

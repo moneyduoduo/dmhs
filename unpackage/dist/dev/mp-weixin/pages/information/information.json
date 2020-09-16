@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "内容列表",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "my-navbar": "/components/my-navbar/my-navbar"
+  }
+}

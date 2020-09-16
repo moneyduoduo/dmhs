@@ -1,0 +1,41 @@
+<template>
+	<view>
+		<uni-list>
+		    <uni-list-item 
+				title="标题文字" thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/hx.png" 
+				note="miaoshu--wefwe---fefwefkjwaelkfjlkwajelfjwlkefalkwjefklajelfjalkwejdflkjl"
+				:showArrow="false"
+				rightText="12-1-1">
+			</uni-list-item>
+			<uni-list-item
+				title="标题文字" thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/hx.png" 
+				note="miaoshu-----"
+				:showArrow="false"
+				rightText="12-1-1">
+			</uni-list-item>
+			<uni-list-item
+				title="标题文字" thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/hx.png" 
+				note="miaoshu-----"
+				:showArrow="false"
+				rightText="12-1-1">
+			</uni-list-item>
+		</uni-list>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				
+			}
+		},
+		methods: {
+			
+		}
+	}
+</script>
+
+<style>
+
+</style>

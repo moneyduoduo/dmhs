@@ -1,0 +1,387 @@
+<template>
+	<view class="container">
+		<!-- 滚动横幅 -->
+		<banner-swiper></banner-swiper>
+		<view class="message">
+			<image src="../../static/images/xiaoxi-9.png" mode="widthFix"></image>
+		</view>
+		<!-- 公司简介 -->
+		<view class="introduction">
+			<!-- 简介顶部图片 -->
+			<view class="header">
+				<view class="color-block-wrap">
+					<view class="color-block">
+						<text class="cn">公司简介</text>
+						<text class="en">INTRODUCTION</text>
+					</view>
+				</view>
+				<view class="pic">
+					<image src="../../static/images/屏幕快照%202020-05-09%2017.14.19.png" mode="widthFix"></image>
+				</view>
+			</view>
+			<!-- 简介公司logo -->
+			<view class="logo">
+				<image src="../../static/images/图层%2013.jpg" mode="widthFix"></image>
+			</view>
+			<!-- 简介文字介绍 -->
+			<view class="text">
+				<text>
+					公司经过20年，公司经过20年公司经过20年，公司经过20年，公司经过20年，公司经过20年
+					公司经过20年，公司经过20年，公司经过20年公司经过20年公司经过20年公司经过20年
+					公司经过20年，公司经过20年，公司经过20年，公司经过20年。
+				</text>
+			</view>
+			<!-- 跳转详情 -->
+			<view class="go">
+				<image src="../../static/images/jiantou .png" mode=""></image>
+			</view>
+		</view>
+		<!-- 合作案例展示列表 -->
+		<view class="example">
+			<view class="header">
+				<view class="title">合作案例</view>
+				<view class="content">掌握一手资讯 了解各地最新动态</view>
+				<view class="other">
+					<text class="time">2020/05/07</text>
+					<text class="more">更多</text>
+				</view>
+			</view>
+			<list-swiper></list-swiper>
+		</view>
+		<!-- 各类商品卡片显示 -->
+		<view class="goods" v-for="(item, index) in goods" :key="index">
+			<view class="top">
+				<text class="title">{{item.type}}</text>
+				<text class="sub-title">{{item.subTitle}}</text>
+			</view>
+			<view class="pic">
+				<image :src="item.pic" mode="widthFix"></image>
+			</view>
+			<view class="description">
+				<view class="title">{{item.title}}</view>
+				<view class="content">{{item.content}}</view>
+			</view>
+			<view class="more">
+				<button type="default">更多图片</button>
+			</view>
+		</view>
+		<!-- 交易说明 -->
+		<view class="terms">
+			<!-- 顶部title -->
+			<view class="header">
+				<view class="img">
+					<image src="../../static/images/图层%205%20拷贝.png" mode="widthFix"></image>
+				</view>
+				<view class="left">
+					<view class="cn">交易说明</view>
+					<view class="en">TRERMS DESCIPTION</view>
+				</view>
+				<view class="right">
+					<image src="../../static/images/jiantou.png" mode="widthFix"></image>
+				</view>
+			</view>
+			<!-- 展示图片列表 -->
+			<view class="list">
+				<view class="item">
+					<view class="pic">
+						<image src="../../static/images/图层%209.png" mode="widthFix"></image>
+					</view>
+					<view class="text">货船买卖交易流程图</view>
+				</view>
+				<view class="item">
+					<view class="pic">
+						<image src="../../static/images/图层%209.png" mode="widthFix"></image>
+					</view>
+					<view class="text">货船买卖交易流程图</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	import executeS from '@/service/executeS.js';
+	import {setStorage, linkTo} from '@/utils/utils.js';
+	export default {
+		data() {
+			return {
+				goods:[
+					{type: '河沙', subTitle: '海沙 石英砂', title: '龙兴达砂生产天然英砂 海砂', 
+					content: '这是一些沙子龙兴达砂生产天然英砂龙兴达砂生这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙产天然英砂,这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙'
+					, pic: '../../static/images/1.png'},
+					{type: '河沙', subTitle: '海沙 石英砂', title: '龙兴达砂生产天然英砂 海砂',
+					content: '这是一些沙子龙兴达砂生产天然英砂龙兴达砂生产天然英砂', pic: '../../static/images/1.png'},
+					{type: '河沙', subTitle: '海沙 石英砂', title: '龙兴达砂生产天然英砂 海砂',
+					content: '这是一些沙子龙兴达砂生产天然英砂龙兴达砂生产天然英砂', pic: '../../static/images/1.png'}
+				]
+			}
+		},
+		onLoad() {
+			//this.getPartyFileClassNames()
+			this.testAPI();
+		},
+		methods: {
+			// 接口请求
+			getPartyFileClassNames() {
+				const paramsPayload = {
+					apixkey: "getPartyFileClassNames",
+					payload: {},
+				}
+				const response = executeS(paramsPayload);
+				console.log(response);
+				if (response.success) {
+					
+				}
+			},
+			testAPI() {
+				const paramsPayload = {
+					apixkey: "getPartyFileClassNames",
+					payload: {},
+				}
+				const response = executeS(paramsPayload);
+				if(response.success){
+					console.log(response);
+				}else {
+					console.log(response);
+				}
+			},
+			// 跳转注册
+			toLogin() {
+				linkTo('/pages/login/login');
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	.message{
+		position: absolute;
+		left: 20rpx;
+		top: 60rpx;
+		width: 50rpx;
+		height: 50rpx;
+		image{
+			width: 100%;
+		}
+	}
+	.introduction{
+		position: relative;
+		padding: 0 40rpx;
+		padding-top: 30px;
+		background: #f8f8f8;
+		margin: 30rpx 0;
+		.header{
+			position: relative;
+			height: 400rpx;
+			.color-block-wrap{
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 999;
+				.color-block{
+					display: flex;
+					flex-direction: column;
+					justify-content:center;
+					z-index: 999;
+					width: 400rpx;
+					height: 400rpx;
+					background: rgba(255, 105, 0, .8);
+					.cn, .en{
+						display: block;
+						padding-left: 30rpx;
+						padding-bottom: 10rpx;
+					}
+					.cn{
+						font-size: 60rpx;
+						font-weight: 900;
+						color: #FFFFFF;
+					}
+					.en{
+						font-size: 20rpx;
+						font-weight: 400;
+						color: #FFFFFF;
+					}
+				}
+			}
+			.pic{
+				position: absolute;
+				right: 0;
+				top: 0;
+				display: flex;
+				flex-direction: column;
+				justify-content:center;
+				width: 400rpx;
+				height: 400rpx;
+				image{
+					width: 100%;
+				}
+			}
+		}
+		.logo{
+			padding: 20rpx 0;
+		}
+		.text{
+			overflow: hidden;
+			text-overflow: ellipsis;
+			word-break: break-all;
+			display: -webkit-box;
+		    -webkit-box-orient: vertical;
+			-webkit-line-clamp:4;
+			color: $my-content-color;
+			font-size: $my-content-size;
+			letter-spacing: $my-content-letter-spacing;
+		}
+		.go{
+			padding: 50rpx 0;
+			text-align: center;
+			image{
+				width: 50rpx;
+				height: 50rpx;
+			}
+		}
+	}
+	.example{
+		padding: 0 40rpx;
+		.header{
+			.title{
+				font-size: $my-title-large-size;
+				color: $my-title-color;
+				font-weight: $my-title-weight;
+				letter-spacing: $my-title-letter-spacing;
+			}
+			.content{
+				padding: 20rpx 0;
+				font-size: $my-content-size;
+				color: $my-content-color;
+				letter-spacing: $my-content-letter-spacing;
+			}
+			.other{
+				padding: 20rpx 50rpx 20rpx 20rpx;
+				.time{
+					font-size: $my-content-size;
+					color: $my-content-color;
+				}
+				.more{
+					float: right;
+					padding: 5rpx 30rpx;
+					font-size: $my-content-size;
+					color: $my-content-color;
+					border: 1rpx solid #e5e5e5;
+					border-radius: 26rpx;
+				}
+			}
+		}
+	}
+	.goods{
+		padding: 50rpx 40rpx;
+		.top{
+			.title{
+				padding-right: 30rpx;
+				font-size: $my-title-large-size;
+				font-weight: $my-title-weight;
+				color: $my-title-color;
+			}
+			.sub-title{
+				font-size: $my-title-size;
+				color: $my-content-color;
+			}
+		}
+		.pic{
+			image{
+				width: 100%;
+			}
+		}
+		.description{
+			.title{
+				padding: 30rpx 0;
+				font-size: $my-title-size;
+				font-weight: $my-title-weight;
+				color: $my-title-color;
+			}
+			.content{
+				font-size: $my-content-size;
+				color: $my-content-color;
+				letter-spacing: $my-content-letter-spacing;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: break-all;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp:4;
+			}
+		}
+		.more{
+			padding: 30rpx 0;
+			padding-top: 80rpx;
+			width: 100%;
+			overflow: hidden;
+			button{
+				float: left;
+				padding: 0 60rpx;
+				border-radius: 150rpx;
+				background: #f27721;
+				color: #FFFFFF;
+				font-size: 28rpx !important;
+			}
+		}
+	}
+	.terms{
+		.header{
+			position: relative;
+			.img{
+				width: 100%;
+				image{
+					width: 100%;
+				}
+			}
+			.left, .right{
+				position: absolute;
+				top: 0;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			.left{
+				left: 20rpx;
+				.cn{
+					padding-bottom: 20rpx;
+					font-size: $my-title-large-size;
+					font-weight: $my-title-weight;
+					color: #FFFFFF;
+				}
+				.en{
+					font-size: 24rpx;
+					color: #FFFFFF;
+				}
+			}
+			.right{
+				right: 20rpx;
+				image{
+					width: 50rpx;
+					height: 50rpx;
+				}
+			}
+		}
+		.list{
+			position: relative;
+			top: -40rpx;
+			padding: 40rpx;
+			border-radius: 40rpx;
+			background: #FFFFFF;
+			.item{
+				padding-bottom: 30rpx;
+				.pic{
+					image{
+						width: 100%;
+					}
+				}
+				.text{
+					padding-top: 20rpx;
+					font-size: $my-title-size;
+					font-weight: $my-title-weight;
+				}
+			}
+		}
+	}
+</style>

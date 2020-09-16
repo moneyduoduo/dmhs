@@ -1,0 +1,84 @@
+<!-- 消息通知列表 -->
+<template>
+	<view>
+		<my-navbar>
+			<text slot="content">消息通知</text>
+		</my-navbar>
+		<view class="container">
+			<view class="news" v-for="(item, index) in newsList" :key="index">
+				<view class="header">
+					<text class="title">{{item.title}}</text>
+					<text class="time">{{item.date}}</text>
+				</view>
+				<view class="content">
+					<text class="text">{{item.content}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				newsList:[
+					{title: '合作案例更行提示', date:'05/12', 
+					content: '这是一个关于新闻的文字这是一个关于新闻的文字这是一个关于新闻的文字这是一个关于新闻的文字这是一个关于新闻的文字这是一个关于新闻的文'},
+					{title: '合作案例更行提示', date:'05/12', content: '这是一个关于新闻的文字这是一个关于新闻的文字这是一个关于新闻的文字'},
+					{title: '合作案例更行提示', date:'05/12', content: '这是一个关于新闻的文字这是一个关于新闻的文字这是一个关于新闻的文字'}
+				]
+			}
+		},
+		methods: {
+			
+		}
+	}
+</script>
+
+<style lang="scss">
+	.container{
+		padding: 0 40rpx;
+		box-sizing: border-box;
+		.news{
+			box-sizing: border-box;
+			padding: 30rpx 0;
+			@include border-1px(#eeeeee)
+			.header{
+				overflow: hidden;
+				.title{
+					font-size: 34rpx;
+					font-weight: 700;
+					line-height: 48rpx;
+					letter-spacing: 0rpx;
+					color: #252525;
+				}
+				.time{
+					float: right;
+					font-size: 26rpx;
+					font-weight: normal;
+					line-height: 45rpx;
+					letter-spacing: 0.3rpx;
+					color: #a4a4a4;
+				}
+			}
+			.content{
+				padding-top: 30rpx;
+				padding-bottom: 20rpx;
+				.text{
+					overflow: hidden;
+					text-overflow: ellipsis;
+					word-break: break-all;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp:2;
+					font-size: 30rpx;
+					font-weight: normal;
+					line-height: 45rpx;
+					letter-spacing: 0.3rpx;
+					color: #a4a4a4;
+				}
+			}
+		}
+	}
+</style>

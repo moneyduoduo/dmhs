@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///F:/officeProject/dmhs/main.js"],"names":["createPage","Page"],"mappings":";;;;;;;;;;kDAAA;AACA;AACA,kH;AACAA,UAAU,CAACC,qBAAD,CAAV,C","file":"pages/introduction/introduction.js","sourcesContent":["import 'uni-pages';\nimport Vue from 'vue'\nimport Page from './pages/introduction/introduction.vue'\ncreatePage(Page)"],"sourceRoot":""}

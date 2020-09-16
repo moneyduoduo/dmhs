@@ -1,0 +1,175 @@
+<template>
+	<view>
+		<my-navbar :backColor="backColor" :navBarColor="navBarColor">
+			<text slot="content" style="color: #FFFFFF;">动态详情</text>
+		</my-navbar>
+		<!-- 顶部订单说明信息 -->
+		<view class="header">
+			<view class="id">业务单号 {{list.id}}</view>
+			<view class="company">公司名称 {{list.company}}</view>
+			<view class="status">{{list.status?'已完成':'未完成'}}</view>
+			<view class="header-bg">
+				<image src="../../static/images/dingdan.png" mode="widthFix"></image>
+			</view>
+		</view>
+		<!-- 动态列表信息 -->
+		<view class="list">
+			<view class="item" v-for="(item, index) in list" :key="index">
+				<!-- 左边日期时间 -->
+				<div class="left">
+					<view class="time">16:12</view>
+					<view class="date">11-21</view>
+				</div>
+				<!-- 右边实时信息描述 -->
+				<view class="right">
+					<view class="text">
+						船只(IMO编号：213213432，名称：QWEHQO）经过深圳盐田港
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				navBarColor:'#3f4140',// 导航栏颜色
+				backColor:'#ffffff',// 返回按钮颜色
+				list: {
+					id: '128379198711',
+					company: '马来西亚大全矿业有限公司',
+					status: 0,
+					business:[
+						{date: '2020-11-21 21:21', desc: '船只(IMO编号：213213432，名称：QWEHQO）经过深圳盐田港'},
+						{date: '2020-11-21 21:21', desc: '船只(IMO编号：213213432，名称：QWEHQO）经过深圳盐田港'},
+						{date: '2020-11-21 21:21', desc: '船只(IMO编号：213213432，名称：QWEHQO）经过深圳盐田港'},
+						{date: '2020-11-21 21:21', desc: '船只(IMO编号：213213432，名称：QWEHQO）经过深圳盐田港'},
+						{date: '2020-11-21 21:21', desc: '船只(IMO编号：213213432，名称：QWEHQO）经过深圳盐田港'}
+					]
+				}
+			};
+		}
+	}
+</script>
+
+<style lang="scss">
+	.header{
+		padding-left: 40rpx;
+		position: relative;
+		width: 750rpx;
+		overflow: hidden;
+		background: #3f4140;
+		.header-bg{
+			position: absolute;
+			right: 40rpx;
+			bottom: -90rpx;
+			width: 190rpx;
+			image{
+				width: 100%;
+			}
+		}
+		.id{
+			padding: 20rpx 0;
+			font-size: 32rpx;
+			font-weight: 700;
+			color: #ffffff;
+		}
+		.company{
+			padding-bottom: 10rpx;
+			padding-top: 8rpx;
+			font-size: 26rpx;
+			color: #d7d7d7;
+		}
+		.status{
+			padding-bottom: 20rpx;
+			font-size: 26rpx;
+			color: #d7d7d7;
+		}
+	}
+	.list{
+		padding: 0 40rpx;
+		padding-top: 50rpx;
+		.item{
+			width: 100%;
+			// background: pink;
+			display: flex;
+			justify-content: flex-start;
+			.left{
+				padding-right: 50rpx;
+				flex-shrink: 0;
+				text-align: center;
+				.time{
+					font-size: 28rpx;
+					color: #aaaaaa;
+				}
+				.date{
+					font-size: 24rpx;
+					color: #aaaaaa;
+				}
+			}
+			.right{
+				position: relative;
+				padding-left: 50rpx;
+				padding-bottom: 100rpx;
+				border-left: solid 1rpx #c7c7c7;
+				.text{
+					font-size: 24rpx;
+					color: #5d5e5d;
+				}
+				/* 追加步骤条的小圆点 */
+				&::after{
+					content: "";
+					position: absolute;
+					left: -8rpx;
+					top: 30rpx;
+					width: 15rpx;
+					height: 15rpx;
+					border-radius: 50%;	
+					background: #d7d7d7;
+				}
+				
+			}
+		}
+		/* 取消最后一个div的左边框 并重新追加div一半大小的边框 */
+		.item:last-child .right{
+			border-left: none;
+		}
+		.item:last-child .right::before{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 1rpx;
+			height: 40rpx;
+			border-left: solid 1rpx #c7c7c7;
+		}
+		.item:last-child .right::after{
+			left: -7rpx;
+		}
+		/* 给第一个div追加背景图片样式 绘制一半高度的边框 */
+		.item:nth-of-type(1) .right{
+			border-left: none;
+		}
+		.item:nth-of-type(1) .right::after{
+			top: 10rpx;
+			left: -20rpx;
+			width: 41rpx;
+			height: 41rpx;
+			border-radius: 50%;
+			background:url(../../static/images/huowu-2.png) no-repeat , linear-gradient(0deg, #e56e1e 0%, #f28c47 50%, #ffa76e 100%);
+			background-position: center;
+			background-size: 60%;
+		}
+		.item:nth-of-type(1) .right::before{
+		 	content: '';
+		 	position: absolute;
+		 	bottom: 0;
+		 	left: 0;
+		 	width: 1rpx;
+		 	height: 120rpx;
+		 	border-left: solid 1rpx #c7c7c7;
+		}
+	}
+</style>

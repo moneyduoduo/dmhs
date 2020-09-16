@@ -1,0 +1,339 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+/* 展示卡片通用样式 */
+.container .message {
+  position: absolute;
+  left: 20rpx;
+  top: 25px;
+  width: 47rpx;
+  height: 47px;
+}
+.container .message image {
+  width: 100%;
+}
+.container .message-dot {
+  position: relative;
+  left: 47rpx;
+  top: -30px;
+  width: 12rpx;
+  height: 12rpx;
+  background: #f54244;
+  border-radius: 50%;
+}
+.introduction {
+  position: relative;
+  padding: 0 40rpx;
+  padding-top: 30px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #f8f8f8;
+}
+.introduction .header {
+  position: relative;
+  height: 400rpx;
+}
+.introduction .header .color-block-wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+}
+.introduction .header .color-block-wrap .color-block {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  z-index: 999;
+  width: 410rpx;
+  height: 410rpx;
+  background: #f27721;
+  opacity: 0.9;
+}
+.introduction .header .color-block-wrap .color-block .cn, .introduction .header .color-block-wrap .color-block .en {
+  display: block;
+  padding-left: 47rpx;
+  padding-bottom: 10rpx;
+}
+.introduction .header .color-block-wrap .color-block .cn {
+  letter-spacing: 1rpx;
+  font-size: 60rpx;
+  font-weight: normal;
+  color: #FFFFFF;
+}
+.introduction .header .color-block-wrap .color-block .en {
+  font-size: 24rpx;
+  font-weight: normal;
+  color: #FFFFFF;
+}
+.introduction .header .pic {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  width: 390rpx;
+  height: 400rpx;
+}
+.introduction .header .pic image {
+  width: 100%;
+}
+.introduction .logo-wrap {
+  position: relative;
+  padding-top: 40rpx;
+}
+.introduction .logo-wrap .bg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.introduction .logo-wrap .text {
+  padding-top: 42rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  font-size: 30rpx;
+  font-weight: normal;
+  letter-spacing: 0.3rpx;
+  color: #a4a4a4;
+}
+.introduction .logo-wrap .go {
+  padding: 65rpx 0;
+  z-index: 900;
+  text-align: center;
+}
+.introduction .logo-wrap .go image {
+  width: 40rpx;
+  height: 40rpx;
+}
+.example {
+  padding: 0 40rpx;
+  padding-top: 65rpx;
+}
+.example .header .title {
+  font-size: 60rpx;
+  font-weight: normal;
+  letter-spacing: -0.6rpx;
+  color: #252525;
+}
+.example .header .content {
+  padding: 34rpx 0;
+  font-size: 30rpx;
+  font-weight: normal;
+  letter-spacing: 0.3rpx;
+  color: #a4a4a4;
+}
+.example .header .other {
+  padding: 40rpx 20rpx 35rpx 20rpx;
+}
+.example .header .other .time {
+  font-size: 26rpx;
+  font-weight: normal;
+  letter-spacing: 0.3rpx;
+  color: #a4a4a4;
+}
+.example .header .other .more {
+  float: right;
+  font-size: 26rpx;
+  text-align: center;
+  color: #a4a4a4;
+  width: 100rpx;
+  height: 40rpx;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  border: solid 1rpx #eeeeee;
+}
+.goods {
+  padding-top: 100rpx;
+}
+.goods .top {
+  padding: 0 40rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.goods .top .sub-title {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  padding-right: 40rpx;
+  font-size: 36rpx;
+  font-weight: normal;
+  letter-spacing: -0.4rpx;
+  color: #696969;
+}
+.goods .top .title {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  font-size: 60rpx;
+  font-weight: normal;
+  letter-spacing: -0.6rpx;
+  color: #252525;
+}
+.goods .pic {
+  padding-top: 40rpx;
+}
+.goods .pic image {
+  width: 100%;
+}
+.goods .description .title {
+  padding: 30rpx 40rpx;
+  font-size: 39rpx;
+  font-weight: normal;
+  letter-spacing: 0rpx;
+  color: #252525;
+}
+.goods .description .content {
+  padding: 0 40rpx;
+  padding-top: 20rpx;
+  font-size: 30rpx;
+  font-weight: normal;
+  line-height: 45rpx;
+  letter-spacing: 0.3rpx;
+  color: #a4a4a4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.goods .more {
+  padding: 90rpx 40rpx 30rpx 40rpx;
+  width: 100%;
+  overflow: hidden;
+}
+.goods .more button {
+  float: left;
+  width: 200rpx;
+  height: 60rpx;
+  background-color: #f27721;
+  border-radius: 30rpx;
+  font-size: 32rpx;
+  font-weight: normal;
+  line-height: 60rpx;
+  letter-spacing: 0rpx;
+  color: #ffffff;
+}
+.terms {
+  padding-top: 80rpx;
+}
+.terms .header {
+  width: 100%;
+  height: 300rpx;
+}
+.terms .header .header-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding: 0 40rpx;
+  padding-top: 65rpx;
+}
+.terms .header .header-content .left {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.terms .header .header-content .left .cn {
+  font-size: 60rpx;
+  font-weight: normal;
+  line-height: 45rpx;
+  letter-spacing: -0.6rpx;
+  color: #ffffff;
+}
+.terms .header .header-content .left .en {
+  padding-top: 20rpx;
+  font-size: 24rpx;
+  font-weight: normal;
+  line-height: 45rpx;
+  letter-spacing: 1.8rpx;
+  color: #ffffff;
+}
+.terms .header .header-content .right {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.terms .header .header-content .right image {
+  width: 50rpx;
+  height: 50rpx;
+}
+.terms .list {
+  position: relative;
+  top: -80rpx;
+  padding: 50rpx 40rpx;
+  border-radius: 40rpx;
+  background: #FFFFFF;
+}
+.terms .list .item .pic image {
+  width: 100%;
+}
+.terms .list .item .text {
+  padding: 40rpx 0;
+  font-size: 40rpx;
+  font-weight: normal;
+  line-height: 48rpx;
+  letter-spacing: 0rpx;
+  color: #252525;
+}
+

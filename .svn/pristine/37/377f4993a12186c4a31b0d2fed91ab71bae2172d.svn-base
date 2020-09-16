@@ -1,0 +1,252 @@
+<template>
+	<view>
+		<my-navbar>
+			<text slot="content">创建业务动态</text>
+		</my-navbar>
+		<view class="container">
+			<!-- 顶部 -->
+			<view class="title">
+				<text>订单信息</text>
+			</view>
+			<!-- 表单详情 -->
+			<view class="infos">
+				<view class="item-wrap">
+					<view class="item">
+						<!-- 左侧文字描述 -->
+						<view class="left">
+							<view class="lab">
+								<view class="text">业务单号</view>
+								<view class="num">23123123123123</view>
+							</view>
+						</view>
+						<!-- 右侧小箭头图标 -->
+						<view class="right">
+							<image src="../../static/images/arrow-left-.png" mode="widthFix"></image>
+						</view>
+					</view>
+				</view>
+				<view class="item-wrap">
+					<view class="item">
+						<!-- 左侧文字描述 -->
+						<view class="left">
+							<view class="lab">货主姓名</view>
+							<view class="text">某某某</view>
+						</view>
+					</view>
+				</view>
+				<view class="item-wrap">
+					<view class="item">
+						<!-- 左侧文字描述 -->
+						<view class="left">
+							<view class="lab">货主公司</view>
+							<view class="text">马来西亚大全矿业有限公司</view>
+						</view>
+					</view>
+				</view>
+				<view class="item-wrap">
+					<view class="item">
+						<!-- 左侧文字描述 -->
+						<view class="left">
+							<view class="lab">下单时间</view>
+							<view class="text">2020-12-23 12：32：33</view>
+						</view>
+						<!-- 右侧小箭头图标 -->
+						<view class="right">
+							<image src="../../static/images/arrow-left-.png" mode="widthFix"></image>
+						</view>
+					</view>
+				</view>
+				<view class="item-wrap">
+					<view class="item">
+						<!-- 左侧文字描述 -->
+						<view class="left">
+							<view class="lab">状态</view>
+							<view class="text">进行中</view>
+						</view>
+						<!-- 右侧小箭头图标 -->
+						<view class="right">
+							<image src="../../static/images/arrow-left-.png" mode="widthFix"></image>
+						</view>
+					</view>
+				</view>
+			</view>
+			<my-split></my-split>
+			<!-- 动态信息 -->
+			<view class="status">
+				<view class="status-title">动态信息</view>
+				<view class="add">
+					<button class="border" type="default" @click="toAdd">
+						<view class="add-pic">
+							<image src="../../static/images/jiahao.png" mode="widthFix"></image>
+						</view>
+						新增动态信息
+					</button>
+				</view>
+				<view class="status-list">
+					<view class="statu-wrap" v-for="(item, index) in status" :key="index">
+						<view class="statu">
+							<view class="date">{{item.date}}</view>
+							<view class="desc">{{item.desc}}</view>
+							<view class="ctrl">
+								<text class="remove">移除</text>
+								<text class="update">编辑</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- 底部按钮 -->
+		<view class="submit">
+			<text>保存</text>
+		</view>
+	</view>
+</template>
+
+<script>
+	import {linkTo} from '@/utils/utils.js';
+	export default {
+		data() {
+			return {
+				status:[
+					{date:'2020-12-12 11:12:12',desc:'我已出仓，感觉良好。我已出仓，感觉良好。我已出仓，感觉良觉觉觉觉觉好。'},
+					{date:'2020-12-12 11:12:12',desc:'我已出仓，感觉良好。我已出仓，感觉良好。我已出仓，感觉良好。我已出仓，感觉良好。'},
+					{date:'2020-12-12 11:12:12',desc:'我已出仓，感觉良好。我已出仓，感觉良好。我已出仓，感觉良好。我已出仓，感觉良好。'},
+					{date:'2020-12-12 11:12:12',desc:'我已出仓，感觉良好。我已出仓，感觉良好。我已出仓，感觉良好。我已出仓，感觉良好。'},
+					{date:'2020-12-12 11:12:12',desc:'我已出仓，感觉良好。我已出仓，感觉良好。我已出仓，感觉良好。我已出仓，感觉良好。'}
+				]
+			};
+		},
+		methods:{
+			toAdd() {
+				linkTo('../business/business-order-info');
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	.container{
+		background: #F8F8F8;
+		margin-bottom: 100rpx;
+		.title{
+			padding: 10rpx 40rpx;
+			font-size: $my-content-size;
+			@include border-1px(#eeeeee);
+		}
+		.item-wrap{
+			@include border-1px(#eeeeee);
+			background: #FFFFFF;
+			.item{
+				padding: 40rpx 40rpx;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				.left{
+					padding-right: 20rpx;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					width: 100%;
+					.lab{
+						font-size: 30rpx;
+						color: #5d5e5d;
+						.num{
+							color: #000000;
+							padding: 10rpx 0;
+						}
+					}
+					.text{
+						font-size: 30rpx;
+						color: #000000;
+					}
+				}
+				.right{
+					flex-shrink: 0;
+					display: flex;
+					align-items: center;
+					width: 10rpx;
+					height: 10rpx;
+					image{
+						width: 100%;
+					}
+				}
+			}
+		}
+		.status{
+			background: #FFFFFF;
+			.status-title{
+				padding: 40rpx;
+				font-size: $my-title-size;
+				font-weight: $my-title-weight;
+				color: #f27721;
+			}
+			.add{
+				padding: 0 40rpx 20rpx 40rpx;
+				button{
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					padding: 10rpx 0;
+					font-size: $my-content-size;
+					background: #fff9f4;
+					color: #f27721;
+					border: solid 1rpx #f27721;
+					.add-pic{
+						margin-right: 10rpx;
+						display: flex;
+						align-items: center;
+						width: 30rpx;
+						height: 30rpx;
+						image{
+							width: 100%;
+						}
+					}
+				}
+			}
+			.status-list{
+				.statu-wrap{
+					@include border-1px(#eeeeee);
+					.statu{
+						padding: 10rpx 40rpx;
+						.date{
+							font-size: 24rpx;
+							color: #5d5e5d;
+						}
+						.desc{
+							text-align: justify;
+							text-justify: newspaper;
+							padding: 20rpx 0;
+							font-size: 30rpx;
+						}
+						.ctrl{
+							padding-bottom: 10rpx;
+							text-align: right;
+							font-size: 26rpx;
+							.remove{
+								color: #ff4545;
+							}
+							.update{
+								padding-left: 30rpx;
+								color: #4b66db;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.submit{
+		position: fixed;
+		bottom: 0;
+		box-sizing: border-box;
+		width: 100%;
+		height: 100rpx;
+		line-height: 100rpx;
+		font-size: 32rpx;
+		text-align: center;
+		vertical-align: middle;
+		background: #f27721;
+		color: #FFFFFF;
+	}
+</style>

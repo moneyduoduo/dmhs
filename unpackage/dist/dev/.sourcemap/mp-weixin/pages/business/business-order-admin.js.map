@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///F:/officeProject/dmhs/main.js"],"names":["createPage","Page"],"mappings":";;;;;;;;;;kDAAA;AACA;AACA,4H;AACAA,UAAU,CAACC,2BAAD,CAAV,C","file":"pages/business/business-order-admin.js","sourcesContent":["import 'uni-pages';\nimport Vue from 'vue'\nimport Page from './pages/business/business-order-admin.vue'\ncreatePage(Page)"],"sourceRoot":""}

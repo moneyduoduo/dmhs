@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "my-navbar": "/components/my-navbar/my-navbar",
+    "my-split": "/components/my-split/my-split"
+  }
+}

@@ -1,0 +1,74 @@
+<!-- 消息通知列表 -->
+<template>
+	<view>
+		<my-navbar>
+			<text slot="content">消息通知</text>
+		</my-navbar>
+		<view class="container">
+			<view class="news" v-for="(item, index) in newsList" :key="index">
+				<view class="header">
+					<text class="title">{{item.title}}</text>
+					<text class="time">{{item.date}}</text>
+				</view>
+				<view class="content">
+					<text class="text">{{item.content}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				newsList:[
+					{title: '合作案例更行提示', date:'05/12', 
+					content: '这是一个关于新闻的文字这是一个关于新闻的文字这是一个关于新闻的文字这是一个关于新闻的文字这是一个关于新闻的文字这是一个关于新闻的文'},
+					{title: '合作案例更行提示', date:'05/12', content: '这是一个关于新闻的文字这是一个关于新闻的文字这是一个关于新闻的文字'},
+					{title: '合作案例更行提示', date:'05/12', content: '这是一个关于新闻的文字这是一个关于新闻的文字这是一个关于新闻的文字'}
+				]
+			}
+		},
+		methods: {
+			
+		}
+	}
+</script>
+
+<style lang="scss">
+	.container{
+		padding: 20px;
+		box-sizing: border-box;
+		.news{
+			box-sizing: border-box;
+			padding: 10px 20px;
+			@include border-1px(#eeeeee)
+			.header{
+				overflow: hidden;
+				.title{
+					font-size: $my-title-size;
+					font-weight: $my-title-weight;
+				}
+				.time{
+					float: right;
+					font-size: 24rpx;
+					color: $my-content-color;
+				}
+			}
+			.content{
+				padding-top: 15px;
+				.text{
+					overflow: hidden;
+					text-overflow: ellipsis;
+					word-break: break-all;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp:2;
+					font-size: $my-content-size;
+					color: $my-content-color;
+				}
+			}
+		}
+	}
+</style>

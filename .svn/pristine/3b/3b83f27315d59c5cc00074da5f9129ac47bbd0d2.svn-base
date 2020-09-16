@@ -1,0 +1,106 @@
+<template>
+	<view>
+		<my-navbar>
+			<text slot="content">修改密码</text>
+		</my-navbar>
+		<view class="container" style="background-image: url(../../static/images/pwd-bg.png);">
+			<view class="wrap">
+				<view class="title">修改密码</view>
+				<view class="subtitle">帮助你更好更方便的使用</view>
+				<!-- 表单数据 -->
+				<view class="form">
+					<view class="pwd">
+						<input :type="isVisible[0]?'text':'password'"  value="" placeholder="请输入原密码" />
+						<view class="eyes" @click="changeVisible(0)">
+							<image :src="isVisible[0]?'../../static/images/kejian.png':'../../static/images/kejianno.png'" mode="widthFix"></image>
+						</view>
+					</view>
+					<view class="pwd">
+						<input :type="isVisible[1]?'text':'password'" value="" placeholder="请输入新密码" />
+						<view class="eyes" @click="changeVisible(1)">
+							<image :src="isVisible[1]?'../../static/images/kejian.png':'../../static/images/kejianno.png'" mode="widthFix"></image>
+						</view>
+					</view>
+					<view class="pwd">
+						<input :type="isVisible[2]?'text':'password'" value="" placeholder="请再次输入原密码" />
+						<view class="eyes" @click="changeVisible(2)">
+							<image :src="isVisible[2]?'../../static/images/kejian.png':'../../static/images/kejianno.png'" mode="widthFix"></image>
+						</view>
+					</view>
+				</view>
+				<!-- 按钮 -->
+				<view class="submit">
+					<button type="default">保存</button>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				isVisible:[false, false, false]
+			}
+		},
+		methods: {
+			changeVisible(index) {
+				this.isVisible.splice(index, 1, !this.isVisible[index]);
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	.container{
+		background-repeat: no-repeat;
+		background-size: 80%;
+		background-position: top right;
+		.wrap{
+			padding: 0 40rpx;
+		}
+		margin-top: 200rpx;
+		.title{
+			font-size: $my-title-large-size;
+			font-weight: $my-title-weight;
+		}
+		.subtitle{
+			padding: 10rpx 0;
+			font-size: $my-content-size;
+			color: #a8a8a8;
+		}
+		.form{
+			padding: 0 40rpx;
+			padding-top: 10rpx;
+			.pwd{
+				@include border-1px(#eeeeee);
+				padding: 40rpx 0;
+				position: relative;
+				display: flex;
+				align-items: center;
+				.eyes{
+					position: absolute;
+					right: 0;
+					display: flex;
+					align-items: center;
+					width: 30rpx;
+					height: 100%;
+					image{
+						width: 100%;
+					}
+				}
+			}
+		}
+		.submit{
+			padding: 100rpx 60rpx;
+			button{
+				font-size: $my-title-color;
+				font-weight: $my-title-weight;
+				background: #f27721;
+				color: #FFFFFF;
+				letter-spacing: 20rpx;
+			}
+		}
+	}
+</style>

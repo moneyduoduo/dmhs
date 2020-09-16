@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///F:/officeProject/dmhs/main.js"],"names":["createPage","Page"],"mappings":";;;;;;;;;;kDAAA;AACA;AACA,oG;AACAA,UAAU,CAACC,eAAD,CAAV,C","file":"components/swiper/swiper.js","sourcesContent":["import 'uni-pages';\nimport Vue from 'vue'\nimport Page from './components/swiper/swiper.vue'\ncreatePage(Page)"],"sourceRoot":""}

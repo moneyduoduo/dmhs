@@ -1,0 +1,459 @@
+<template>
+	<view class="container">
+		<!-- 滚动横幅 -->
+		<banner-swiper></banner-swiper>
+		<view class="message" :style="{'top': msgPosition}" @click="toNews">
+			<image src="../../static/images/xiaoxi-9.png" mode="widthFix"></image>
+			<view class="message-dot" v-show="isNews"></view>
+		</view>
+		
+		<!-- 公司简介 -->
+		<view class="introduction">
+			<view class="bg"></view>
+			<!-- 简介顶部图片 -->
+			<view class="header">
+				<view class="color-block-wrap">
+					<view class="color-block">
+						<text class="cn">公司简介</text>
+						<text class="en">INTRODUCTION</text>
+					</view>
+				</view>
+				<view class="pic">
+					<image src="../../static/images/desc-company-bg.png" mode="widthFix"></image>
+				</view>
+			</view>
+			<!-- 简介公司logo -->
+			<view class="logo-wrap" style="background: url(../../static/images/desc-bg.png);">
+				<!-- <image class="bg" src="../../static/images/desc-bg.png" mode="widthFix"></image> -->
+				<view class="logo">
+					<image src="../../static/images/logo.png" mode="widthFix"></image>
+				</view>
+				<!-- 简介文字介绍 -->
+				<view class="text">
+					<text>
+						公司经过20年，公司经过20年公司经过20年，公司经过20年，公司经过20年，公司经过20年
+						公司经过20年，公司经过20年，公司经过20年公司经过20年公司经过20年公司经过20年
+						公司经过20年，公司经过20年，公司经过20年，公司经过20年。
+					</text>
+				</view>
+				<!-- 跳转详情 -->
+				<view class="go" @click="toInfo">
+					<image src="../../static/images/jiantou .png" mode=""></image>
+				</view>
+			</view>
+		</view>
+		<!-- 合作案例展示列表 -->
+		<view class="example">
+			<view class="header">
+				<view class="title">合作案例</view>
+				<view class="content">掌握一手资讯 了解各地最新动态</view>
+				<view class="other">
+					<text class="time">2020/05/07</text>
+					<text class="more" @click="moreExample">更多</text>
+				</view>
+			</view>
+		</view>
+		<list-swiper></list-swiper>
+		<!-- 各类商品卡片显示 -->
+		<view class="goods" v-for="(item, index) in goods" :key="index">
+			<view class="top">
+				<text @click="changeTitleActive(num, index)" class="sub-title" :class="{'title':titleActive[index] === num}"  
+				v-for="(text, num) in item.type" :key="num">{{text}}</text>
+			</view>
+			<view class="pic">
+				<image :src="item.pic" mode="widthFix"></image>
+			</view>
+			<view class="description">
+				<view class="title">{{item.title}}</view>
+				<view class="content">{{item.content}}</view>
+			</view>
+			<view class="more">
+				<button type="default">更多图片</button>
+			</view>
+		</view>
+		<!-- 交易说明 -->
+		<view class="terms">
+			<!-- 顶部title -->
+			<view class="header" style="background: url(../../static/images/terms-bg.png) no-repeat;background-size: 100%;">
+				<view class="header-content">
+					<view class="left">
+						<view class="cn">交易说明</view>
+						<view class="en">TRERMS DESCIPTION</view>
+					</view>
+					<view class="right">
+						<image src="../../static/images/jiantou.png" mode="widthFix"></image>
+					</view>
+				</view>
+			</view>
+			<!-- 展示图片列表 -->
+			<view class="list">
+				<view class="item">
+					<view class="pic">
+						<image src="../../static/images/terms-pic.png" mode="widthFix"></image>
+					</view>
+					<view class="text">货船买卖交易流程图</view>
+				</view>
+				<view class="item">
+					<view class="pic">
+						<image src="../../static/images/terms-pic2.png" mode="widthFix"></image>
+					</view>
+					<view class="text">货船买卖交易流程图</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	import executeS from '@/service/executeS.js';
+	import {setStorage, linkTo} from '@/utils/utils.js';
+	export default {
+		data() {
+			return {
+				isNews: true,
+				titleActive: [],// 标题切换索引值
+				msgPosition: '25px',// 初始消息按钮位置
+				goods:[
+					{type: ['河沙','海沙', '石英砂'], title: '龙兴达砂生产天然英砂 海砂', 
+					content: '这是一些沙子龙兴达砂生产天然英砂龙兴达砂生这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙产天然英砂,这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙这是一些沙子龙'
+					, pic: '../../static/images/1.png'},
+					{type: ['河沙','海沙', '石英砂'], title: '龙兴达砂生产天然英砂 海砂',
+					content: '这是一些沙子龙兴达砂生产天然英砂龙兴达砂生产天然英砂', 
+					pic: '../../static/images/1.png'},
+					{type: ['河沙','海沙', '石英砂'], title: '龙兴达砂生产天然英砂 海砂',
+					content: '这是一些沙子龙兴达砂生产天然英砂龙兴达砂生产天然英砂', 
+					pic: '../../static/images/1.png'}]
+			}
+		},
+		onLoad() {
+			
+		},
+		onReady() {
+			// 获取距离状态栏的位置 通过胶囊按钮的位置来获取
+			this.msgPosition = wx.getMenuButtonBoundingClientRect().top + 'px'; //胶囊的位置
+			// 设置goods标题切换数组的默认长度以及默认值
+			this.titleActive = Array.apply(null, {length:this.goods.length}).map(() => 0);
+		},
+		methods: {
+			// 跳转内容列表
+			moreExample() {
+				linkTo('../information/information');
+			},
+			// 跳转到消息列表
+			toNews() {
+				linkTo('../notify/notify');
+			},
+			// 跳转公司详情
+			toInfo() {
+				console.log(123)
+				linkTo('../company-profile/company-profile');
+			},
+			// 接口请求
+			getPartyFileClassNames() {
+				const paramsPayload = {
+					apixkey: "getPartyFileClassNames",
+					payload: {},
+				}
+				const response = executeS(paramsPayload);
+				if (response.success) {
+					
+				}
+			},
+			// 展示列表的头部标题切换
+			changeTitleActive(num, index) {
+				// 数组值的直接修改时vue无法监听到 所以可以监听数组的方法来修改数组里的值
+				this.titleActive.splice(index,1,num);
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	.container{
+		.message{
+			position: absolute;
+			left: 20rpx;
+			top: var(--status-bar-height);
+			width: 47rpx;
+			height: 47px;
+			image{
+				width: 100%;
+			}
+		}
+		.message-dot{
+			position: relative;
+			left: 47rpx;
+			top: -30px;
+			width: 12rpx;
+			height: 12rpx;
+			background: #f54244;
+			border-radius: 50%;
+		}
+	}
+	
+	.introduction{
+		position: relative;
+		padding: 0 40rpx;
+		padding-top: 30px;
+		width: 100%;
+		box-sizing: border-box;
+		background: #f8f8f8;
+		.header{
+			position: relative;
+			height: 400rpx;
+			.color-block-wrap{
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 999;
+				.color-block{
+					display: flex;
+					flex-direction: column;
+					justify-content:center;
+					z-index: 999;
+					width: 410rpx;
+					height: 410rpx;
+					background: #f27721;
+					opacity: 0.9;
+					.cn, .en{
+						display: block;
+						padding-left: 47rpx;
+						padding-bottom: 10rpx;
+					}
+					.cn{
+						letter-spacing: 1rpx;
+						font-size: 60rpx;
+						font-weight: normal;
+						color: #FFFFFF;
+					}
+					.en{
+						font-size: 24rpx;
+						font-weight: normal;
+						color: #FFFFFF;
+					}
+				}
+			}
+			.pic{
+				position: absolute;
+				right: 0;
+				top: 0;
+				display: flex;
+				flex-direction: column;
+				justify-content:center;
+				width: 390rpx;
+				height: 400rpx;
+				image{
+					width: 100%;
+				}
+			}
+		}
+		.logo-wrap{
+			position: relative;
+			padding-top: 40rpx;
+			.bg{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				box-sizing: border-box;
+			}
+
+			.text{
+				padding-top: 42rpx;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: break-all;
+				display: -webkit-box;
+			    -webkit-box-orient: vertical;
+				-webkit-line-clamp:4;
+				font-size: 30rpx;
+				font-weight: normal;
+				letter-spacing: 0.3rpx;
+				color: #a4a4a4;
+			}
+			.go{
+				padding: 65rpx 0;
+				z-index: 900;
+				text-align: center;
+				image{
+					width: 40rpx;
+					height: 40rpx;
+				}
+			}
+		}
+	}
+	.example{
+		padding: 0 40rpx;
+		padding-top: 65rpx;
+		.header{
+			.title{
+				font-size: 60rpx;
+				font-weight: normal;
+				letter-spacing: -0.6rpx;
+				color: #252525;
+			}
+			.content{
+				padding: 34rpx 0;
+				font-size: 30rpx;
+				font-weight: normal;
+				letter-spacing: 0.3rpx;
+				color: #a4a4a4;
+			}
+			.other{
+				padding: 40rpx 20rpx 35rpx 20rpx;
+				.time{
+					font-size: 26rpx;
+					font-weight: normal;
+					letter-spacing: 0.3rpx;
+					color: #a4a4a4;
+				}
+				.more{
+					float: right;
+					font-size: 26rpx;
+					text-align: center;
+					color: #a4a4a4;
+					width: 100rpx;
+					height: 40rpx;
+					background-color: #ffffff;
+					border-radius: 20rpx;
+					border: solid 1rpx #eeeeee;
+				}
+			}
+		}
+	}
+	.goods{
+		padding-top: 100rpx;
+		.top{
+			padding: 0 40rpx;
+			height: 80rpx;
+			line-height: 80rpx;
+			.sub-title{
+				transition: all 0.4s ease;
+				padding-right: 40rpx;
+				font-size: 36rpx;
+				font-weight: normal;
+				letter-spacing: -0.4rpx;
+				color: #696969;
+					
+			}
+			.title{
+				transition: all 0.4s ease;
+				font-size: 60rpx;
+				font-weight: normal;
+				letter-spacing: -0.6rpx;
+				color: #252525;
+			}
+		}
+		.pic{
+			padding-top: 40rpx;
+			image{
+				width: 100%;
+			}
+		}
+		.description{
+			.title{
+				padding: 30rpx 40rpx;
+				font-size: 39rpx;
+				font-weight: normal;
+				letter-spacing: 0rpx;
+				color: #252525;
+			}
+			.content{
+				padding: 0 40rpx;
+				padding-top: 20rpx;
+				font-size: 30rpx;
+				font-weight: normal;
+				line-height: 45rpx;
+				letter-spacing: 0.3rpx;
+				color: #a4a4a4;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: break-all;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp:3;
+			}
+		}
+		.more{
+			padding: 90rpx 40rpx 30rpx 40rpx;
+			width: 100%;
+			overflow: hidden;
+			button{
+				float: left;
+				width: 200rpx;
+				height: 60rpx;
+				background-color: #f27721;
+				border-radius: 30rpx;
+				font-size: 32rpx;
+				font-weight: normal;
+				line-height: 60rpx;
+				letter-spacing: 0rpx;
+				color: #ffffff;
+			}
+		}
+	}
+	.terms{
+		padding-top: 80rpx;
+		.header{
+			width: 100%;
+			height: 300rpx;
+			.header-content{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0 40rpx;
+				padding-top: 65rpx;
+				.left{
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: center;
+					.cn{
+						font-size: 60rpx;
+						font-weight: normal;
+						line-height: 45rpx;
+						letter-spacing: -0.6rpx;
+						color: #ffffff;
+					}
+					.en{
+						padding-top: 20rpx;
+						font-size: 24rpx;
+						font-weight: normal;
+						line-height: 45rpx;
+						letter-spacing: 1.8rpx;
+						color: #ffffff;
+					}
+				}
+				.right{
+					display: flex;
+					align-items: center;
+					image{
+						width: 50rpx;
+						height: 50rpx;
+					}
+				}
+			}
+		}
+		.list{
+			position: relative;
+			top: -80rpx;
+			padding: 50rpx 40rpx;
+			border-radius: 40rpx;
+			background: #FFFFFF;
+			.item{
+				.pic{
+					image{
+						width: 100%;
+					}
+				}
+				.text{
+					padding: 40rpx 0;
+					font-size: 40rpx;
+					font-weight: normal;
+					line-height: 48rpx;
+					letter-spacing: 0rpx;
+					color: #252525;
+				}
+			}
+		}
+	}
+</style>
